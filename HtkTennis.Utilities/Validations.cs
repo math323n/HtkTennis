@@ -5,32 +5,96 @@ using System.Text;
 
 namespace HtkTennis.Utilities
 {
+    /// <summary>
+    /// Class containing static validation methods for encapsulation
+    /// </summary>
     public static class Validations
     {
         /// <summary>
-        /// 
+        /// Checks if a string is null
         /// </summary>
-        /// <param name="s"></param>
+        /// <param name="input"></param>
         /// <returns></returns>
-        public static bool TextOnly(string s)
+        public static (bool, string) ValidateIsStringNull(string input)
         {
-            return !string.IsNullOrWhiteSpace(s) && s.All(c => char.IsLetter(c));
+            if(string.IsNullOrEmpty(input))
+            {
+                return (false, "The value cannot be null, or empty");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
         }
 
-        public static bool TextOnlySentence(string s)
+        #region Number Validation Methods
+        /// <summary>
+        /// Checks if a int is negative
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static (bool, string) ValidateIsIntNegative(int number)
         {
-            if(string.IsNullOrWhiteSpace(s))
+            if(number < 0)
             {
-                return false;
+                return (false, "The number cannot be lower than 0");
             }
-            foreach(string word in s.Split(' ', '\t'))
+            else
             {
-                if(!TextOnly(word))
-                {
-                    return false;
-                }
+                return (true, string.Empty);
             }
-            return true;
         }
+
+        /// <summary>
+        /// Checks if a double is negative
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static (bool, string) ValidateIsDoubleNegative(double number)
+        {
+            if(number < 0)
+            {
+                return (false, "The number cannot be lower than 0");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
+        }
+
+        /// <summary>
+        /// Checks if a float is negative
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static (bool, string) ValidateIsFloatNegative(float number)
+        {
+            if(number < 0)
+            {
+                return (false, "The number cannot be lower than 0");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
+        }
+
+        /// <summary>
+        /// Checks if a decimal is negative
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static (bool, string) ValidateIsDecimalNegative(decimal number)
+        {
+            if(number < 0)
+            {
+                return (false, "The number cannot be lower than 0");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
+        }
+        #endregion
     }
 }
