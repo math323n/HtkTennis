@@ -23,12 +23,8 @@ namespace HtkTennis.GUI
     {
         public MainWindow()
         {
-            Logger.Configure();
-            InitializeComponent();
-        
+            InitializeComponent(); 
         }
-
-       
 
     }
 }

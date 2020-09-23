@@ -29,6 +29,10 @@ namespace NT.Logging
             // Assign location for .txt document
             logFilePath = ConfigurationManager.AppSettings["LogFilePath"].ToString();
         }
+        static Logger()
+        {
+            Configure();
+        }
 
         /// <summary>
         /// Method for handling message Logs
