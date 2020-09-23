@@ -93,9 +93,9 @@ namespace HtkTennis.Entities.Models
 
                 entity.Property(e => e.FkCourtId).HasColumnName("FK_CourtId");
 
-                entity.Property(e => e.FkFirstMemberId).HasColumnName("FK_FirstMemberId");
+                entity.Property(e => e.FkFirstMember).HasColumnName("FK_FirstMemberId");
 
-                entity.Property(e => e.FkSecondMemberId).HasColumnName("FK_SecondMemberId");
+                entity.Property(e => e.FkSecondMember).HasColumnName("FK_SecondMemberId");
 
                 entity.Property(e => e.StartTime).HasColumnType("datetime");
 

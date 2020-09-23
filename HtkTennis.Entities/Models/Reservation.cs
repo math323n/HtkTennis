@@ -15,6 +15,10 @@ namespace HtkTennis.Entities
         #endregion
 
         #region Properties
+        public virtual int FkFirstMemberId { get; set; }
+        public virtual int FkSecondMemberId { get; set; }
+
+
         /// <summary>
         /// Id of the <see cref="Reservation"/>
         /// </summary>
@@ -28,6 +32,7 @@ namespace HtkTennis.Entities
             {
                 if(pkReservationId != value)
                 {
+                    // Using the validation class, check if the int is not null
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {
@@ -54,6 +59,7 @@ namespace HtkTennis.Entities
             {
                 if(fkCourtId != value)
                 {
+                    // Using the validation class, check if the int is not null
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {
@@ -67,62 +73,11 @@ namespace HtkTennis.Entities
             }
         }
 
-        /// <summary>
-        /// Id of the first player <see cref="Member"/>
-        /// </summary>
-        public virtual int FkFirstMember
-        {
-            get
-            {
-                return fkFirstMember;
-            }
-            set
-            {
-                if(fkFirstMember != value)
-                {
-                    (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
-                    if(isValid)
-                    {
-                        fkFirstMember = value;
-                    }
-                    else
-                    {
-                        throw new ArgumentException(errorMessage, nameof(PkReservationId));
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Id of the second player <see cref="Member"/>
-        /// </summary>
-        public virtual int FkSecondMember
-        {
-            get
-            {
-                return fkSecondMember;
-            }
-            set
-            {
-                if(fkSecondMember != value)
-                {
-                    (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
-                    if(isValid)
-                    {
-                        fkSecondMember = value;
-                    }
-                    else
-                    {
-                        throw new ArgumentException(errorMessage, nameof(PkReservationId));
-                    }
-                }
-            }
-        }
 
         /// <summary>
         /// The starting time of the <see cref="Reservation"/>
         /// </summary>
-        public DateTime StartTime
+        public virtual DateTime StartTime
         {
             get
             {
@@ -132,6 +87,7 @@ namespace HtkTennis.Entities
             {
                 if(startTime != value)
                 {
+                    // Using the validation class, check if the DateTime is not null
                     (bool isValid, string errorMessage) = Validations.ValidateIsDateBefore(value, endTime);
                     if(isValid)
                     {
@@ -148,7 +104,7 @@ namespace HtkTennis.Entities
         /// <summary>
         /// The time of which the <see cref="Reservation"/> ends
         /// </summary>
-        public DateTime EndTime
+        public virtual DateTime EndTime
         {
             get
             {
@@ -158,6 +114,7 @@ namespace HtkTennis.Entities
             {
                 if(endTime != value)
                 {
+                    // Using the validation class, check if the DateTime is not null
                     (bool isValid, string errorMessage) = Validations.ValidateIsDateAfter(value, startTime);
                     if(isValid)
                     {
@@ -174,9 +131,9 @@ namespace HtkTennis.Entities
 
         #region Navigation Properties
         public virtual Court FkCourt { get; set; }
-        public virtual Member FkFirstMemberNavigation { get; set; }
-        public virtual Member FkSecondMemberNavigation { get; set; }
-        #endregion
+        public virtual Member FkFirstMember { get; set; }
+        public virtual Member FkSecondMember { get; set; }
 
+        #endregion
     }
 }

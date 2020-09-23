@@ -16,7 +16,7 @@ namespace HtkTennis.Entities
         /// <summary>
         /// Id of the case <see cref="Ranking"/>
         /// </summary>
-        public int PkRankId
+        public virtual int PkRankId
         {
             get
             {
@@ -26,6 +26,7 @@ namespace HtkTennis.Entities
             {
                 if(pkRankId != value)
                 {
+                    // Using the validation class, check if the int is not null
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {
@@ -42,7 +43,7 @@ namespace HtkTennis.Entities
         /// <summary>
         /// Id of the <see cref="Member"/>
         /// </summary>
-        public int FkMemberId
+        public virtual int FkMemberId
         {
             get
             {
@@ -52,6 +53,7 @@ namespace HtkTennis.Entities
             {
                 if(fkMemberId != value)
                 {
+                    // Using the validation class, check if the int is not null
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {
@@ -67,7 +69,7 @@ namespace HtkTennis.Entities
         /// <summary>
         /// Points of the <see cref="Ranking"/>
         /// </summary>
-        public int Points
+        public virtual int Points
         {
             get
             {
@@ -77,6 +79,7 @@ namespace HtkTennis.Entities
             {
                 if(points != value)
                 {
+                    // Using the validation class, check if the int is not null
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {

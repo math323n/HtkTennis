@@ -8,8 +8,8 @@ namespace HtkTennis.Entities
     public partial class Court
     {
         #region
-        private int pkCourtId;
-        private string courtName;
+        protected int pkCourtId;
+        protected string courtName;
         #endregion
 
         public Court()
@@ -21,7 +21,7 @@ namespace HtkTennis.Entities
         /// <summary>
         /// Id of the <see cref="Court"/>
         /// </summary>
-        public int PkCourtId
+        public virtual int PkCourtId
         {
             get
             {
@@ -31,6 +31,7 @@ namespace HtkTennis.Entities
             {
                 if(pkCourtId != value)
                 {
+                    // Using the validation class, check if the int is not null
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {
@@ -47,7 +48,7 @@ namespace HtkTennis.Entities
         /// <summary>
         /// Name of the <see cref"Court"/>
         /// </summary>
-        public string CourtName
+        public virtual string CourtName
         {
             get
             {
@@ -57,6 +58,7 @@ namespace HtkTennis.Entities
             {
                 if(courtName != value)
                 {
+                    // Using the validation class, check if the string is not null
                     (bool isValid, string errorMessage) = Validations.ValidateIsStringNull(value);
                     if(isValid)
                     {

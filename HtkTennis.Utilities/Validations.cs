@@ -151,6 +151,24 @@ namespace HtkTennis.Utilities
                 return (false, "The second date was before the first date");
             }
         }
+
+        /// <summary>
+        /// Checks is a DateTime is null
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>(<see cref="bool"/>, <see cref="string"/>)</returns>
+        public static (bool, string) ValidateDateNotNull(DateTime date)
+        {
+            // Null check
+            if(date == null)
+            {
+                return (false, "A date cannot be null");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
+        }
         #endregion
     }
 }
