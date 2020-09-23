@@ -5,14 +5,18 @@ namespace HtkTennis.Entities
 {
     public partial class Reservation
     {
-        #region Fields
-        private int pkReservationId;
-        private int fkCourtId;
-        private int fkFirstMemberId;
-        private int fkSecondMemberId;
-        #endregion
 
-        public int PkReservationId
+        int pkReservationId;
+        int fkCourtId;
+        int fkFirstMember;
+        int fkSecondMember;
+        DateTime startTime;
+        DateTime endTime;
+
+        /// <summary>
+        /// Id of the <see cref="Reservation"/>
+        /// </summary>
+        public virtual int PkReservationId
         {
             get
             {
@@ -22,7 +26,6 @@ namespace HtkTennis.Entities
             {
                 if(pkReservationId != value)
                 {
-                    // Using the validation class, check if the value does not go below 0
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {
@@ -36,7 +39,10 @@ namespace HtkTennis.Entities
             }
         }
 
-        public int FkCourtId
+        /// <summary>
+        /// Id of the reservated <see cref="Court"/>
+        /// </summary>
+        public virtual int FkCourtId
         {
             get
             {
@@ -46,7 +52,6 @@ namespace HtkTennis.Entities
             {
                 if(fkCourtId != value)
                 {
-                    // Using the validation class, check if the value does not go below 0
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {
@@ -54,65 +59,118 @@ namespace HtkTennis.Entities
                     }
                     else
                     {
-                        throw new ArgumentException(errorMessage, nameof(FkCourtId));
+                        throw new ArgumentException(errorMessage, nameof(PkReservationId));
                     }
                 }
             }
         }
 
-        public int FkFirstMemberId
+        /// <summary>
+        /// Id of the first player <see cref="Member"/>
+        /// </summary>
+        public virtual int FkFirstMember
         {
             get
             {
-                return fkFirstMemberId;
+                return fkFirstMember;
             }
             set
             {
-                if(fkFirstMemberId != value)
+                if(fkFirstMember != value)
                 {
-                    // Using the validation class, check if the value does not go below 0
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {
-                        fkFirstMemberId = value;
+                        fkFirstMember = value;
                     }
                     else
                     {
-                        throw new ArgumentException(errorMessage, nameof(FkFirstMemberId));
+                        throw new ArgumentException(errorMessage, nameof(PkReservationId));
                     }
                 }
             }
         }
 
-
-        public int FkSecondMemberId
+        /// <summary>
+        /// Id of the second player <see cref="Member"/>
+        /// </summary>
+        public virtual int FkSecondMember
         {
             get
             {
-                return fkSecondMemberId;
+                return fkSecondMember;
             }
             set
             {
-                if(fkSecondMemberId != value)
+                if(fkSecondMember != value)
                 {
-                    // Using the validation class, check if the value does not go below 0
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {
-                        fkSecondMemberId = value;
+                        fkSecondMember = value;
                     }
                     else
                     {
-                        throw new ArgumentException(errorMessage, nameof(fkSecondMemberId));
+                        throw new ArgumentException(errorMessage, nameof(PkReservationId));
                     }
                 }
             }
         }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+
+        /// <summary>
+        /// The starting time of the <see cref="Reservation"/>
+        /// </summary>
+        public DateTime StartTime
+        {
+            get
+            {
+                return startTime;
+            }
+            set
+            {
+                if(startTime != value)
+                {
+                    (bool isValid, string errorMessage) = Validations.ValidateIsDateBefore(value, endTime);
+                    if(isValid)
+                    {
+                        StartTime = value;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(errorMessage, nameof(StartTime));
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// The time of which the <see cref="Reservation"/> ends
+        /// </summary>
+        public DateTime EndTime
+        {
+            get
+            {
+                return endTime;
+            }
+            set
+            {
+                if(endTime != value)
+                {
+                    (bool isValid, string errorMessage) = Validations.ValidateIsDateAfter(value, startTime);
+                    if(isValid)
+                    {
+                        endTime = value;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(errorMessage, nameof(EndTime));
+                    }
+                }
+            }
+        }
 
         public virtual Court FkCourt { get; set; }
-        public virtual Member FkFirstMember { get; set; }
-        public virtual Member FkSecondMember { get; set; }
+        public virtual Member FkFirstMemberNavigation { get; set; }
+        public virtual Member FkSecondMemberNavigation { get; set; }
     }
 }
