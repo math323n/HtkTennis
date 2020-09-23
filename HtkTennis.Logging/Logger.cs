@@ -4,13 +4,23 @@ using System.Net.Http;
 using System.Configuration;
 using System.Threading.Tasks;
 
-namespace NT.Logging
+namespace HtkTennis
 {
     public static class Logger
     {
         #region Fields
         private static string logFilePath;
         private static string logFolderPath;
+        #endregion
+
+        #region Constructor
+        /// <summary>
+        /// Constructor for Logger, purpose is to configure the logger
+        /// </summary>
+        static Logger()
+        {
+            Configure();
+        }
         #endregion
 
         #region Synchronous Methods
@@ -28,10 +38,6 @@ namespace NT.Logging
             }
             // Assign location for .txt document
             logFilePath = ConfigurationManager.AppSettings["LogFilePath"].ToString();
-        }
-        static Logger()
-        {
-            Configure();
         }
 
         /// <summary>
@@ -75,6 +81,8 @@ namespace NT.Logging
         }
         #endregion
 
+
+
         #region Async Methods
         /// <summary>
         /// asynchronous method for handling exception Logs
@@ -107,7 +115,6 @@ namespace NT.Logging
             // Write...
             writer.WriteLine(message);
         }
-
         #endregion
     }
 }
