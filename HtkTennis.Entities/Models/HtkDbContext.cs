@@ -16,10 +16,10 @@ namespace HtkTennis.Entities.Models
         {
         }
 
-        public virtual DbSet<Courts> Courts { get; set; }
-        public virtual DbSet<Members> Members { get; set; }
-        public virtual DbSet<Rankings> Rankings { get; set; }
-        public virtual DbSet<Reservations> Reservations { get; set; }
+        public virtual DbSet<Court> Courts { get; set; }
+        public virtual DbSet<Member> Members { get; set; }
+        public virtual DbSet<Ranking> Rankings { get; set; }
+        public virtual DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,7 +32,7 @@ namespace HtkTennis.Entities.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Courts>(entity =>
+            modelBuilder.Entity<Court>(entity =>
             {
                 entity.HasKey(e => e.PkCourtId);
 
@@ -43,7 +43,7 @@ namespace HtkTennis.Entities.Models
                     .HasMaxLength(255);
             });
 
-            modelBuilder.Entity<Members>(entity =>
+            modelBuilder.Entity<Member>(entity =>
             {
                 entity.HasKey(e => e.PkMemberId);
 
@@ -68,7 +68,7 @@ namespace HtkTennis.Entities.Models
                     .HasMaxLength(255);
             });
 
-            modelBuilder.Entity<Rankings>(entity =>
+            modelBuilder.Entity<Ranking>(entity =>
             {
                 entity.HasKey(e => e.PkRankId);
 
@@ -83,7 +83,7 @@ namespace HtkTennis.Entities.Models
                     .HasConstraintName("FK_Rankings_Members");
             });
 
-            modelBuilder.Entity<Reservations>(entity =>
+            modelBuilder.Entity<Reservation>(entity =>
             {
                 entity.HasKey(e => e.PkReservationId);
 

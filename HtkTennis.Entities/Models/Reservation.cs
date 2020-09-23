@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HtkTennis.Entities
 {
-    public partial class Reservations
+    public partial class Reservation
     {
         public int PkReservationId { get; set; }
         public int FkCourtId { get; set; }
@@ -12,8 +12,8 @@ namespace HtkTennis.Entities
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
 
-        public virtual Courts FkCourt { get; set; }
-        public virtual Members FkFirstMember { get; set; }
-        public virtual Members FkSecondMember { get; set; }
+        public virtual Court FkCourt { get; set; }
+        public virtual Member FkFirstMember { get; set; }
+        public virtual Member FkSecondMember { get; set; }
     }
 }
