@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace HtkTennis.Utilities
+﻿namespace HtkTennis.Utilities
 {
     /// <summary>
     /// Class containing static validation methods for encapsulation

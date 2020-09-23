@@ -10,7 +10,7 @@ namespace HtkTennis.GUI.ViewModels
     public class CourtViewModel: ViewModelBase
     {
         #region Fields
-        protected ObservableCollection<Member> courts;
+        protected ObservableCollection<Court> courts;
         protected Court selectedCourt;
         #endregion
 
@@ -25,7 +25,7 @@ namespace HtkTennis.GUI.ViewModels
         #endregion
 
         #region Properties
-        public virtual ObservableCollection<Member> Members
+        public virtual ObservableCollection<Court> Courts
         {
             get
             {
@@ -37,7 +37,7 @@ namespace HtkTennis.GUI.ViewModels
             }
         }
 
-        public virtual Court SelectedMember
+        public virtual Court SelectedCourt
         {
             get
             {

@@ -1,7 +1,5 @@
 ﻿using HtkTennis.Utilities;
-
 using System;
-using System.Collections.Generic;
 
 namespace HtkTennis.Entities
 {
