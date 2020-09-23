@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtkTennis.GUI", "HtkTennis.GUI\HtkTennis.GUI.csproj", "{CA5862EC-8DFD-4145-87D5-0431188BEBF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtkTennis.GUI", "HtkTennis.GUI\HtkTennis.GUI.csproj", "{CA5862EC-8DFD-4145-87D5-0431188BEBF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtkTennis.Entities", "HtkTennis.Entities\HtkTennis.Entities.csproj", "{2DB92661-C6DA-4E14-9C40-6AD6417B266D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtkTennis.Entities", "HtkTennis.Entities\HtkTennis.Entities.csproj", "{2DB92661-C6DA-4E14-9C40-6AD6417B266D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtkTennis.Api", "HtkTennis.Api\HtkTennis.Api.csproj", "{B091777A-6E3C-4985-B111-2B718F82FC10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtkTennis.Api", "HtkTennis.Api\HtkTennis.Api.csproj", "{B091777A-6E3C-4985-B111-2B718F82FC10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtkTennis.DataAccess", "HtkTennis.DataAccess\HtkTennis.DataAccess.csproj", "{97A04391-6B50-46AB-B65B-B0A5F0A2F38E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtkTennis.DataAccess", "HtkTennis.DataAccess\HtkTennis.DataAccess.csproj", "{97A04391-6B50-46AB-B65B-B0A5F0A2F38E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtkTennis.Utilities", "HtkTennis.Utilities\HtkTennis.Utilities.csproj", "{C0CDE385-B6C2-4FBF-82FD-5A06F51BE6E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtkTennis.Utilities", "HtkTennis.Utilities\HtkTennis.Utilities.csproj", "{C0CDE385-B6C2-4FBF-82FD-5A06F51BE6E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtkTennis.Logging", "HtkTennis.Logging\HtkTennis.Logging.csproj", "{AADCEB14-A5C1-4E0C-8439-58FAF6B1E6A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtkTennis.Logging", "HtkTennis.Logging\HtkTennis.Logging.csproj", "{AADCEB14-A5C1-4E0C-8439-58FAF6B1E6A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtkTennis.Tests", "HtkTennis.Tests\HtkTennis.Tests.csproj", "{7E657786-17E2-4F1C-A618-07DA200F4B3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtkTennis.Services", "HtkTennis.Services\HtkTennis.Services.csproj", "{6C655F17-8FE0-4632-B20D-BEF11348EA23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtkTennis.Tests", "HtkTennis.Tests\HtkTennis.Tests.csproj", "{A40F9DE1-49F8-49A2-93E7-7164FA6A7EA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +49,14 @@ Global
 		{AADCEB14-A5C1-4E0C-8439-58FAF6B1E6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AADCEB14-A5C1-4E0C-8439-58FAF6B1E6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AADCEB14-A5C1-4E0C-8439-58FAF6B1E6A2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E657786-17E2-4F1C-A618-07DA200F4B3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E657786-17E2-4F1C-A618-07DA200F4B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E657786-17E2-4F1C-A618-07DA200F4B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E657786-17E2-4F1C-A618-07DA200F4B3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C655F17-8FE0-4632-B20D-BEF11348EA23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C655F17-8FE0-4632-B20D-BEF11348EA23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C655F17-8FE0-4632-B20D-BEF11348EA23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C655F17-8FE0-4632-B20D-BEF11348EA23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A40F9DE1-49F8-49A2-93E7-7164FA6A7EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40F9DE1-49F8-49A2-93E7-7164FA6A7EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40F9DE1-49F8-49A2-93E7-7164FA6A7EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40F9DE1-49F8-49A2-93E7-7164FA6A7EA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
