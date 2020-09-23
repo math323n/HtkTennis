@@ -6,33 +6,20 @@ namespace HtkTennis.Entities
 {
     public partial class Member
     {
-        #region Fields
         protected string firstName;
         protected string lastName;
         protected string address;
         protected string email;
-        protected DateTime birthdate;
-        #endregion
 
-        #region Constructor
         public Member()
         {
             Rankings = new HashSet<Ranking>();
             ReservationsFkFirstMember = new HashSet<Reservation>();
             ReservationsFkSecondMember = new HashSet<Reservation>();
         }
-        #endregion
 
-        #region Properties
-
-        /// <summary>
-        /// Id of the case <see cref="Member"/>
-        /// </summary>
         public virtual int PkMemberId { get; set; }
 
-        /// <summary>
-        /// First name of the case <see cref="Member"/>
-        /// </summary>
         public virtual string FirstName
         {
             get
@@ -57,10 +44,6 @@ namespace HtkTennis.Entities
                 }
             }
         }
-
-        /// <summary>
-        /// Last name of the case <see cref="Member"/>
-        /// </summary>
         public virtual string LastName
         {
             get
@@ -86,10 +69,6 @@ namespace HtkTennis.Entities
             }
         }
 
-
-        /// <summary>
-        /// Address of the case <see cref="Member"/>
-        /// </summary>
         public virtual string Address
         {
             get
@@ -115,9 +94,6 @@ namespace HtkTennis.Entities
             }
         }
 
-        /// <summary>
-        /// Email of the case <see cref="Member"/>
-        /// </summary>
         public virtual string Email
         {
             get
@@ -142,39 +118,11 @@ namespace HtkTennis.Entities
                 }
             }
         }
-        /// <summary>
-        /// Birthdate of the case <see cref="Member"/>
-        /// </summary>
-        public virtual DateTime Birthdate
-        {
-            get
-            {
-                return birthdate;
-            }
-            set
-            {
-                if(birthdate != value)
-                {
-                    // Using the validation class, check if the DateTime is not null
-                    (bool isValid, string errorMessage) = Validations.ValidateDateNotNull(value);
-                    if(isValid)
-                    {
-                        birthdate = value;
-                    }
-                    else
-                    {
-                        throw new ArgumentException(errorMessage, nameof(birthdate));
-                    }
-                }
-            }
-        }
-        #endregion
 
-        #region Navigation Properties
+        public virtual DateTime Birthdate { get; set; }
 
         public virtual ICollection<Ranking> Rankings { get; set; }
         public virtual ICollection<Reservation> ReservationsFkFirstMember { get; set; }
         public virtual ICollection<Reservation> ReservationsFkSecondMember { get; set; }
-        #endregion
     }
 }

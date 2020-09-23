@@ -1,8 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace HtkTennis.Tests
 {
@@ -10,7 +8,7 @@ namespace HtkTennis.Tests
     public class ValidationTests
     {
         [TestMethod]
-        public static void ValidateIsStringNullTest()
+        public void ValidateIsStringNullTest()
         {
             string input = "";
             Assert.IsNotNull(input);
@@ -22,7 +20,7 @@ namespace HtkTennis.Tests
         /// <param name="input"></param>
         /// <returns>(<see cref="bool"/>, <see cref="string"/>)</returns>
         [TestMethod]
-        public static void ValidateReservationDatesTest()
+        public void ValidateReservationDatesTest()
         {
             DateTime firstDate = new DateTime(2010 - 01 - 01);
             DateTime secondDate = new DateTime(2010 - 01 - 02);
@@ -32,5 +30,6 @@ namespace HtkTennis.Tests
 
             Assert.IsTrue(first > second);
         }
+
     }
 }
