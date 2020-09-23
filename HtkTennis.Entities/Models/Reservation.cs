@@ -6,12 +6,10 @@ namespace HtkTennis.Entities
     public partial class Reservation
     {
         #region Fields
-        int pkReservationId;
-        int fkCourtId;
-        int fkFirstMember;
-        int fkSecondMember;
-        DateTime startTime;
-        DateTime endTime;
+        protected int pkReservationId;
+        protected int fkCourtId;
+        protected DateTime startTime;
+        protected DateTime endTime;
         #endregion
 
         #region Properties
@@ -87,7 +85,6 @@ namespace HtkTennis.Entities
             {
                 if(startTime != value)
                 {
-                    // Using the validation class, check if the DateTime is not null
                     (bool isValid, string errorMessage) = Validations.ValidateIsDateBefore(value, endTime);
                     if(isValid)
                     {
@@ -114,8 +111,7 @@ namespace HtkTennis.Entities
             {
                 if(endTime != value)
                 {
-                    // Using the validation class, check if the DateTime is not null
-                    (bool isValid, string errorMessage) = Validations.ValidateIsDateAfter(value, startTime);
+                    (bool isValid, string errorMessage) = Validations.ValidateIsDateBefore(startTime, value);
                     if(isValid)
                     {
                         endTime = value;
