@@ -5,14 +5,16 @@ namespace HtkTennis.Entities
 {
     public partial class Reservation
     {
-
+        #region Fields
         int pkReservationId;
         int fkCourtId;
         int fkFirstMember;
         int fkSecondMember;
         DateTime startTime;
         DateTime endTime;
+        #endregion
 
+        #region Properties
         /// <summary>
         /// Id of the <see cref="Reservation"/>
         /// </summary>
@@ -168,9 +170,13 @@ namespace HtkTennis.Entities
                 }
             }
         }
+        #endregion
 
+        #region Navigation Properties
         public virtual Court FkCourt { get; set; }
         public virtual Member FkFirstMemberNavigation { get; set; }
         public virtual Member FkSecondMemberNavigation { get; set; }
+        #endregion
+
     }
 }
