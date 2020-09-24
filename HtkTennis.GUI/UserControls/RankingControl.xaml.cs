@@ -17,23 +17,22 @@ using System.Windows.Shapes;
 namespace HtkTennis.GUI.UserControls
 {
     /// <summary>
-    /// Interaction logic for MemberController.xaml
+    /// Interaction logic for RankingControl.xaml
     /// </summary>
-    public partial class MemberControl: UserControl
+    public partial class RankingControl: UserControl
     {
-
         #region Fields
-        private readonly MemberViewModel viewModel;
+        private readonly RankingViewModel viewModel;
         private bool isLoaded;
         #endregion
 
         #region Constructor
-        public MemberControl()
+        public RankingControl()
         {
             InitializeComponent();
 
             // Initialize the viewModel
-            viewModel = DataContext as MemberViewModel;
+            viewModel = DataContext as RankingViewModel;
         }
         #endregion
 
