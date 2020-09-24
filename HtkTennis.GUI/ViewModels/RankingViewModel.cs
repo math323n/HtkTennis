@@ -11,51 +11,8 @@ using System.Threading.Tasks;
 
 namespace HtkTennis.GUI.ViewModels
 {
-    public class RankingViewModel: ViewModelBase
+    public class RankingViewModel: ViewModelBase<Ranking>
     {
-        #region Fields
-        protected ObservableCollection<Ranking> rankings;
-        protected Ranking selectedRanking;
-        #endregion
-
-        #region Constructor
-        public RankingViewModel()
-        {
-            // Initialize collection to prevent error with the ReplaceWith extention method
-            rankings = new ObservableCollection<Ranking>();
-        }
-        #endregion
-
-        /// <summary>
-        /// The displayed rankings in the view
-        /// </summary>
-        public virtual ObservableCollection<Ranking> Rankings
-        {
-            get
-            {
-                return rankings;
-            }
-            set
-            {
-                SetProperty(ref rankings, value);
-            }
-        }
-
-        /// <summary>
-        /// The selected ranking in the view
-        /// </summary>
-        public virtual Ranking SelectedRanking
-        {
-            get
-            {
-                return selectedRanking;
-            }
-            set
-            {
-                SetProperty(ref selectedRanking, value);
-            }
-        }
-
         #region Methods
         /// <summary>
         /// Loads all members in from the database
@@ -70,7 +27,7 @@ namespace HtkTennis.GUI.ViewModels
             // Get all reservations
             IEnumerable<Ranking> rankings = await rankingRepository.GetAllAsync();
             // Replace collection
-            Rankings.ReplaceWith(rankings);
+            Items.ReplaceWith(rankings);
         }
         #endregion
     }

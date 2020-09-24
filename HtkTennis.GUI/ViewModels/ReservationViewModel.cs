@@ -12,53 +12,8 @@ using System.Threading.Tasks;
 
 namespace HtkTennis.GUI.ViewModels
 {
-    public class ReservationViewModel: ViewModelBase
+    public class ReservationViewModel: ViewModelBase<Reservation>
     {
-        #region Properties
-        protected ObservableCollection<Reservation> reservations;
-        protected Reservation selectedReservation;
-        #endregion
-
-        #region Constructor
-        public ReservationViewModel()
-        {
-            // Initialize collection to prevent error with the ReplaceWith extention method
-            reservations = new ObservableCollection<Reservation>();
-        }
-        #endregion
-
-        #region Properties
-        /// <summary>
-        /// The displayed reservations in the view
-        /// </summary>
-        public ObservableCollection<Reservation> Reservations
-        {
-            get
-            {
-                return reservations;
-            }
-            set
-            {
-                SetProperty(ref reservations, value);
-            }
-        }
-
-        /// <summary>
-        /// The selected reservation in the view
-        /// </summary>
-        public Reservation SelectedReservation
-        {
-            get
-            {
-                return selectedReservation;
-            }
-            set
-            {
-                SetProperty(ref selectedReservation, value);
-            }
-        }
-        #endregion
-
         #region Methods
         protected override async Task LoadAllAsync()
         {
@@ -69,7 +24,7 @@ namespace HtkTennis.GUI.ViewModels
             // Get all reservations
             IEnumerable<Reservation> reservations = await reservationRepository.GetAllAsync();
             // Replace collection
-            Reservations.ReplaceWith(reservations);
+            Items.ReplaceWith(reservations);
         }
         #endregion
     }
