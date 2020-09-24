@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace HtkTennis.Tests
 {
+    /// <summary>
+    /// Class for testing the Repositories
+    /// </summary>
     [TestClass]
     public class RepositoryTests
     {

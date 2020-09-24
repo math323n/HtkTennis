@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace HtkTennis.GUI.ViewModels
 {
+    /// <summary>
+    /// ViewModel for Ranking View
+    /// </summary>
     public class RankingViewModel: ViewModelBase<Ranking>
     {
         #region Methods

@@ -6,6 +6,9 @@ using System;
 
 namespace HtkTennis.Tests
 {
+    /// <summary>
+    /// Test class for validation method 
+    /// </summary>
     [TestClass]
     public class ValidationTests
     {

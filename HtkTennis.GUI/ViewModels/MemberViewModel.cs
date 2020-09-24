@@ -14,7 +14,9 @@ using System.Windows.Data;
 
 namespace HtkTennis.GUI.ViewModels
 {
-
+    /// <summary>
+    /// ViewModel for Member View
+    /// </summary>
     public class MemberViewModel: ViewModelBase<Member>
     {
         #region Fields
