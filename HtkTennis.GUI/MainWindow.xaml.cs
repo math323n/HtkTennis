@@ -23,6 +23,7 @@ namespace HtkTennis.GUI
     {
         public MainWindow()
         {
+
             InitializeComponent(); 
         }
 

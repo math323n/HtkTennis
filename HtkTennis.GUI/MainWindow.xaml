@@ -4,9 +4,66 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HtkTennis.GUI"
+        xmlns:usercontrols="clr-namespace:HtkTennis.GUI.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="600"
+        Width="800">
     <Grid>
+        <!--#region Grid Definitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="180" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="200" />
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region Menu Bar-->
+        <DockPanel Margin="1"
+                   Grid.ColumnSpan="4">
+            <Menu DockPanel.Dock="Top">
+                <Menu.Items>
+                    <MenuItem Header="File">
+                        <MenuItem Header="Settings" />
+                    </MenuItem>
+                    <MenuItem Header="Help">
+                        <MenuItem Header="About" />
+                        <MenuItem Header="Guide" />
+                    </MenuItem>
+                </Menu.Items>
+            </Menu>
+        </DockPanel>
+        <!--#endregion-->
+
+        <!-- Tabs -->
+        <TabControl Grid.Row="1"
+                    Grid.RowSpan="4"
+                    Grid.ColumnSpan="2"
+                    Background="#FFFAFA">
+
+            <!--#region Orders-->
+            <TabItem Header="Members">
+                <usercontrols:MemberControl />
+            </TabItem>
+            <!--#endregion-->
+
+            <!--#region Products -->
+            <TabItem Header="Tennis Courts">
+                <usercontrols:CourtControl />
+            </TabItem>
+            <!--#endregion-->
+
+
+        </TabControl>
+        <!--#endregion-->
+
 
     </Grid>
 </Window>
