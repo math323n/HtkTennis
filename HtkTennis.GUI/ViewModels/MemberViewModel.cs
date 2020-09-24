@@ -306,7 +306,7 @@ namespace HtkTennis.GUI.ViewModels
                 }
 
 
-                // Reset values in the view
+                // Reset values in the viewa
                 FirstName = null;
                 LastName = null;
                 Address = null;

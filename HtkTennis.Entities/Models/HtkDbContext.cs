@@ -110,13 +110,13 @@ namespace HtkTennis.Entities.Models
                     .HasConstraintName("FK_Reservations_Courts");
 
                 entity.HasOne(d => d.FkFirstMemberNavigation)
-                   .WithMany(p => p.ReservationFkFirstMemberNavigations)
-                   .HasForeignKey(d => d.FkFirstMember)
-                   .OnDelete(DeleteBehavior.ClientSetNull)
-                   .HasConstraintName("FK_Reservations_FirstMember");
+                    .WithMany(p => p.ReservationFkFirstMember)
+                    .HasForeignKey(d => d.FkFirstMember)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Reservations_FirstMember");
 
                 entity.HasOne(d => d.FkSecondMemberNavigation)
-                    .WithMany(p => p.ReservationFkSecondMemberNavigations)
+                    .WithMany(p => p.ReservationFkSecondMember)
                     .HasForeignKey(d => d.FkSecondMember)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Reservations_SecondMember");
