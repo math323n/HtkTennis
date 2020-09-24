@@ -1,7 +1,10 @@
 ﻿using HtkTennis.DataAccess.Base;
 using HtkTennis.Entities;
+
 using Microsoft.EntityFrameworkCore;
+
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace HtkTennis.DataAccess
@@ -14,7 +17,7 @@ namespace HtkTennis.DataAccess
         /// <returns></returns>
         public override async Task<IEnumerable<Ranking>> GetAllAsync()
         {
-            return await context.Set<Ranking>().Include("Members").ToListAsync();
+            return await context.Set<Ranking>().Include("FkMember").OrderByDescending(r => r.Points).ToListAsync();
         }
     }
 }

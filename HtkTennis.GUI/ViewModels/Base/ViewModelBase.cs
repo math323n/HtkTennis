@@ -12,13 +12,18 @@ namespace HtkTennisGui.ViewModels.Base
     {
         #region Methods
         /// <summary>
-        /// Loads data from the database
-        /// Gets overriden inside OrderViewModel & ProductViewModel
+        /// Calls the <see cref="LoadAllAsync"/> method used to load all viewmodel data.
         /// </summary>
-        public virtual Task LoadAllAsync()
+        public virtual async Task InitializeAsync()
         {
-            throw new NotImplementedException();
+            // Load suppliers
+            await LoadAllAsync();
         }
+
+        /// <summary>
+        /// Loads all data from the database, and assigns it to the observable collections.
+        /// </summary>
+        protected abstract Task LoadAllAsync();
         #endregion
     }
 }

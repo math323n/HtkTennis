@@ -12,10 +12,12 @@ namespace HtkTennis.Entities
         protected string courtName;
         #endregion
 
+        #region Constructor
         public Court()
         {
             Reservations = new HashSet<Reservation>();
         }
+        #endregion
 
         #region Properties
         /// <summary>
@@ -71,6 +73,7 @@ namespace HtkTennis.Entities
                 }
             }
         }
+
         #endregion
 
         #region Navigation Properties

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using HtkTennis.Entities;
+
+using System;
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HtkTennis.Services.Base
@@ -46,7 +46,7 @@ namespace HtkTennis.Services.Base
             }
             catch(Exception ex)
             {
-                throw new ArgumentException("No connection was established to Endpoint.", ex);
+                throw new WebServiceException("No connection was established to Endpoint.", ex);
             }
         }
     }

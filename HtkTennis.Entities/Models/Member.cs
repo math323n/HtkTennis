@@ -1,4 +1,5 @@
 ﻿using HtkTennis.Utilities;
+
 using System;
 using System.Collections.Generic;
 
@@ -6,20 +7,56 @@ namespace HtkTennis.Entities
 {
     public partial class Member
     {
+        #region Fields
+        protected int pkMemberId;
         protected string firstName;
         protected string lastName;
         protected string address;
         protected string email;
+        protected DateTime birthdate;
+        protected int phone;
+        #endregion
 
+        #region Constructor
         public Member()
         {
             Rankings = new HashSet<Ranking>();
-            ReservationsFkFirstMember = new HashSet<Reservation>();
-            ReservationsFkSecondMember = new HashSet<Reservation>();
+            ReservationFkFirstMemberNavigations = new HashSet<Reservation>();
+            ReservationFkSecondMemberNavigations = new HashSet<Reservation>();
+        }
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Id of the <see cref="Member"/>
+        /// </summary>
+        public virtual int PkMemberId
+        {
+            get
+            {
+                return pkMemberId;
+            }
+            set
+            {
+                if(pkMemberId != value)
+                {
+                    // Using the validation class, check if the int is not null
+                    (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
+                    if(isValid)
+                    {
+                        pkMemberId = value;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(errorMessage, nameof(pkMemberId));
+                    }
+                }
+            }
         }
 
-        public virtual int PkMemberId { get; set; }
-
+        /// <summary>
+        /// First name of the case <see cref="Member"/>
+        /// </summary>
         public virtual string FirstName
         {
             get
@@ -44,6 +81,9 @@ namespace HtkTennis.Entities
                 }
             }
         }
+        /// <summary>
+        /// Last name of the case <see cref="Member"/>
+        /// </summary>
         public virtual string LastName
         {
             get
@@ -69,6 +109,9 @@ namespace HtkTennis.Entities
             }
         }
 
+        /// <summary>
+        /// Address of the case <see cref="Member"/>
+        /// </summary>
         public virtual string Address
         {
             get
@@ -94,6 +137,9 @@ namespace HtkTennis.Entities
             }
         }
 
+        /// <summary>
+        /// Email of the case <see cref="Member "/>
+        /// </summary>
         public virtual string Email
         {
             get
@@ -118,11 +164,65 @@ namespace HtkTennis.Entities
                 }
             }
         }
+        /// <summary>
+        /// Birthdate of the case <see cref="Member"/>
+        /// </summary>
+        public virtual DateTime Birthdate
+        {
+            get
+            {
+                return birthdate;
+            }
+            set
+            {
+                if(birthdate != value)
+                {
+                    (bool isValid, string errorMessage) = Validations.ValidateDateNotNull(birthdate);
+                    if(isValid)
+                    {
+                        birthdate = value;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(errorMessage, nameof(birthdate));
+                    }
+                }
+            }
+        }
 
-        public virtual DateTime Birthdate { get; set; }
+        /// <summary>
+        /// Birthdate of the case <see cref="Member"/>
+        /// </summary>
+        public virtual int Phone
+        {
+            get
+            {
+                return phone;
+            }
+            set
+            {
+                if(phone != value)
+                {
+                    (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(phone);
+                    if(isValid)
+                    {
+                        phone = value;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(errorMessage, nameof(phone));
+                    }
+                }
+            }
+        }
 
+        #endregion
+
+        #region Navigation Properties
         public virtual ICollection<Ranking> Rankings { get; set; }
-        public virtual ICollection<Reservation> ReservationsFkFirstMember { get; set; }
-        public virtual ICollection<Reservation> ReservationsFkSecondMember { get; set; }
+        public virtual ICollection<Reservation> ReservationFkFirstMemberNavigations { get; set; }
+        public virtual ICollection<Reservation> ReservationFkSecondMemberNavigations { get; set; }
+        #endregion
+
     }
 }

@@ -1,6 +1,13 @@
-﻿using HtkTennis.Entities;
+﻿using HtkTennis.DataAccess.Base;
+using HtkTennis.DataAccess.Factory;
+using HtkTennis.Entities;
+using HtkTennis.Utilities;
+
 using HtkTennisGui.ViewModels.Base;
+
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace HtkTennis.GUI.ViewModels
 {
@@ -13,17 +20,18 @@ namespace HtkTennis.GUI.ViewModels
         #endregion
 
         #region Constructor
-        /// <summary>
-        /// Constructor for MemberViewModel
-        /// </summary>
         public MemberViewModel()
         {
-            Members = new ObservableCollection<Member>();
+            // Initialize collection to prevent error with the ReplaceWith extention method
+            members = new ObservableCollection<Member>();
         }
         #endregion
 
         #region Properties
-        public virtual ObservableCollection<Member> Members
+        /// <summary>
+        /// The displayed members in the view
+        /// </summary>
+        public ObservableCollection<Member> Members
         {
             get
             {
@@ -35,7 +43,10 @@ namespace HtkTennis.GUI.ViewModels
             }
         }
 
-        public virtual Member SelectedMember
+        /// <summary>
+        /// The selected member in the view
+        /// </summary>
+        public Member SelectedMember
         {
             get
             {
@@ -45,6 +56,24 @@ namespace HtkTennis.GUI.ViewModels
             {
                 SetProperty(ref selectedMember, value);
             }
+        }
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Loads all members in from the database
+        /// </summary>
+        /// <returns></returns>
+        protected override async Task LoadAllAsync()
+        {
+            // Create factory, and get the instance
+            RepositoryFactory<RepositoryBase<Member>, Member> memberFactory = RepositoryFactory<RepositoryBase<Member>, Member>.GetInstance();
+            // Create repository with the factory
+            RepositoryBase<Member> memberRepository = memberFactory.Create();
+            // Get all reservations
+            IEnumerable<Member> members = await memberRepository.GetAllAsync();
+            // Replace collection
+            Members.ReplaceWith(members);
         }
         #endregion
     }

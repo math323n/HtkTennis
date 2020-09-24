@@ -1,4 +1,5 @@
 ﻿using HtkTennis.Utilities;
+
 using System;
 using System.Collections.Generic;
 
@@ -7,9 +8,9 @@ namespace HtkTennis.Entities
     public partial class Ranking
     {
         #region Fields
-        private int pkRankId;
-        private int fkMemberId;
-        private int points;
+        protected int pkRankId;
+        protected int fkMemberId;
+        protected int points;
         #endregion
 
         #region Properties
@@ -66,6 +67,7 @@ namespace HtkTennis.Entities
                 }
             }
         }
+
         /// <summary>
         /// Points of the <see cref="Ranking"/>
         /// </summary>

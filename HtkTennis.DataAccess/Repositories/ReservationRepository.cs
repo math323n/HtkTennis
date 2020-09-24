@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace HtkTennis.DataAccess.Repositories
 {
-
     public class ReservationRepository: RepositoryBase<Reservation>
     {
         /// <summary>

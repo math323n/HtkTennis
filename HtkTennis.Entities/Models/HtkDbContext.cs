@@ -105,17 +105,17 @@ namespace HtkTennis.Entities.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Reservations_Courts");
 
-                entity.HasOne(d => d.FkFirstMember)
-                    .WithMany(p => p.ReservationsFkFirstMember)
-                    .HasForeignKey(d => d.FkFirstMemberId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Reservations_Members");
+                entity.HasOne(d => d.FkFirstMemberNavigation)
+                   .WithMany(p => p.ReservationFkFirstMemberNavigations)
+                   .HasForeignKey(d => d.FkFirstMember)
+                   .OnDelete(DeleteBehavior.ClientSetNull)
+                   .HasConstraintName("FK_Reservations_FirstMember");
 
-                entity.HasOne(d => d.FkSecondMember)
-                    .WithMany(p => p.ReservationsFkSecondMember)
-                    .HasForeignKey(d => d.FkSecondMemberId)
+                entity.HasOne(d => d.FkSecondMemberNavigation)
+                    .WithMany(p => p.ReservationFkSecondMemberNavigations)
+                    .HasForeignKey(d => d.FkSecondMember)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Reservations_Members1");
+                    .HasConstraintName("FK_Reservations_SecondMember");
             });
 
             OnModelCreatingPartial(modelBuilder);

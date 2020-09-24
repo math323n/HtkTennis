@@ -1,9 +1,13 @@
-﻿using HtkTennis.Entities;
+﻿using HtkTennis.DataAccess.Base;
+using HtkTennis.DataAccess.Factory;
+using HtkTennis.Entities;
+using HtkTennis.Utilities;
+
 using HtkTennisGui.ViewModels.Base;
-using System;
+
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace HtkTennis.GUI.ViewModels
 {
@@ -20,11 +24,15 @@ namespace HtkTennis.GUI.ViewModels
         /// </summary>
         public CourtViewModel()
         {
-            Courts = new ObservableCollection<Court>();
+            // Initialize collection to prevent error with the ReplaceWith extention method
+            courts = new ObservableCollection<Court>();
         }
         #endregion
 
         #region Properties
+        /// <summary>
+        /// The displayed courts in the view
+        /// </summary>
         public virtual ObservableCollection<Court> Courts
         {
             get
@@ -37,6 +45,9 @@ namespace HtkTennis.GUI.ViewModels
             }
         }
 
+        /// <summary>
+        /// The selected court in the view
+        /// </summary>
         public virtual Court SelectedCourt
         {
             get
@@ -49,5 +60,21 @@ namespace HtkTennis.GUI.ViewModels
             }
         }
         #endregion
+
+        /// <summary>
+        /// Loads all members in from the database
+        /// </summary>
+        /// <returns></returns>
+        protected override async Task LoadAllAsync()
+        {
+            // Create factory, and get the instance
+            RepositoryFactory<RepositoryBase<Court>, Court> courtFactory = RepositoryFactory<RepositoryBase<Court>, Court>.GetInstance();
+            // Create repository with the factory
+            RepositoryBase<Court> courtRepository = courtFactory.Create();
+            // Get all reservations
+            IEnumerable<Court> courts = await courtRepository.GetAllAsync();
+            // Replace collection
+            Courts.ReplaceWith(courts);
+        }
     }
 }
