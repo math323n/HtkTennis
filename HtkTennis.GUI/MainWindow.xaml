@@ -46,15 +46,21 @@
                     Grid.ColumnSpan="4"
                     Background="#FFFAFA">
 
-            <!--#region Orders-->
+            <!--#region Members-->
             <TabItem Header="Members">
                 <usercontrols:MemberControl />
             </TabItem>
             <!--#endregion-->
 
-            <!--#region Products -->
+            <!--#region Tennis Courts -->
             <TabItem Header="Tennis Courts">
                 <usercontrols:CourtControl />
+            </TabItem>
+            <!--#endregion-->
+            
+            <!--#region Reservations -->
+            <TabItem Header="Reservations">
+                <usercontrols:ReservationControl />
             </TabItem>
             <!--#endregion-->
 

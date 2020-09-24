@@ -11,10 +11,134 @@
              Loaded="OnLoaded">
     <!--#region DataContext -->
     <UserControl.DataContext>
-        <viewModel:ReservationViewModel />
+        <viewModel:MemberViewModel />
     </UserControl.DataContext>
     <!--#endregion-->
     <Grid>
+        <!--#region Column Difinitions -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--#endregion-->
+
+        <!--#region Detail -->
+        <Grid Grid.Column="0">
+
+            <!--#region Row Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+
+            <!--#region ListView -->
+            <ListView Grid.Row="0"
+                      ItemsSource="{Binding Items}"
+                      SelectedItem="{Binding SelectedItem}">
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID"
+                                        DisplayMemberBinding="{Binding PkMemberId}" />
+                        <GridViewColumn Header="Fornavn"
+                                        DisplayMemberBinding="{Binding FirstName}" />
+                        <GridViewColumn Header="Efternavn"
+                                        DisplayMemberBinding="{Binding LastName}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <!--#endregion-->
+
+            <!--#region Buttons -->
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button Content="Tilføj"
+                        Margin="3"
+                        Width="50"
+                        Background="AliceBlue"
+                        Command="{Binding AddCommand}" />
+                <Button Content="Rediger"
+                        Width="50"
+                        Background="AliceBlue"
+                        Margin="3"
+                        Command="{Binding EditCommand}"
+                        CommandParameter="{Binding SelectedItem}" />
+                <Button Content="Gem"
+                        Width="50"
+                        Background="AliceBlue"
+                        Margin="3"
+                        Command="{Binding SaveCommand}"
+                        CommandParameter="{Binding SelectedItem}" />
+            </StackPanel>
+            <!--#endregion-->
+
+        </Grid>
+        <!--#endregion-->
+
+        <!--#region Master -->
+        <Grid Grid.Column="1">
+            <GroupBox Header="Oplysninger"
+                      Background="FloralWhite"
+                      Height="180"
+                      Width="400">
+                <StackPanel Orientation="Horizontal">
+
+                    <!--#region Input -->
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Fornavn"
+                                   Width="80" />
+                            <TextBox Width="150"
+                                     Text="{Binding FirstName, Mode=TwoWay}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Efternavn"
+                                   Width="80" />
+                            <TextBox Width="150"
+                                     Text="{Binding LastName, Mode=TwoWay}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Addresse"
+                                   Width="80" />
+                            <TextBox Width="150"
+                                     Text="{Binding Address, Mode=TwoWay}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Mobil"
+                                   Width="80" />
+                            <TextBox Width="150"
+                                     Text="{Binding Phone, Mode=TwoWay}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Email"
+                                   Width="80" />
+                            <TextBox Width="150"
+                                     Text="{Binding Email, Mode=TwoWay}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Fødselsdag"
+                                   Width="80" />
+                            <DatePicker Width="150"
+                                        SelectedDate="{Binding Birthdate, Mode=TwoWay}" />
+                        </StackPanel>
+                    </StackPanel>
+                    <!--#endregion-->
+
+                    <!--#region Delete Button -->
+                    <Button Content="Slet Medlem"
+                            Width="80"
+                            Height="25"
+                            Margin="40,0,0,0"
+                            Command="{Binding DeleteCommand}"
+                            CommandParameter="{Binding SelectedItem}" />
+                    <!--#endregion-->
+
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <!--#endregion-->
 
     </Grid>
 </UserControl>
