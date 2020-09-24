@@ -7,6 +7,7 @@ namespace HtkTennis.DataAccess.Base
 {
     /// <summary>
     /// Base repository interface
+    /// Part of Repository Pattern, this interface is implemented.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IRepositoryBase<T>

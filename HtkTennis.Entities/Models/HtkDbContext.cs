@@ -97,9 +97,9 @@ namespace HtkTennis.Entities.Models
 
                 entity.Property(e => e.FkCourtId).HasColumnName("FK_CourtId");
 
-                entity.Property(e => e.FkFirstMember).HasColumnName("FK_FirstMemberId");
+                entity.Property(e => e.FkFirstMemberId).HasColumnName("FK_FirstMemberId");
 
-                entity.Property(e => e.FkSecondMember).HasColumnName("FK_SecondMemberId");
+                entity.Property(e => e.FkSecondMemberId).HasColumnName("FK_SecondMemberId");
 
                 entity.Property(e => e.StartTime).HasColumnType("datetime");
 
@@ -111,13 +111,13 @@ namespace HtkTennis.Entities.Models
 
                 entity.HasOne(d => d.FkFirstMemberNavigation)
                     .WithMany(p => p.ReservationFkFirstMember)
-                    .HasForeignKey(d => d.FkFirstMember)
+                    .HasForeignKey(d => d.FkFirstMemberId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Reservations_FirstMember");
 
                 entity.HasOne(d => d.FkSecondMemberNavigation)
                     .WithMany(p => p.ReservationFkSecondMember)
-                    .HasForeignKey(d => d.FkSecondMember)
+                    .HasForeignKey(d => d.FkSecondMemberId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Reservations_SecondMember");
             });

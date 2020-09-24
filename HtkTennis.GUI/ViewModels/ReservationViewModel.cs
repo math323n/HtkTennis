@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace HtkTennis.GUI.ViewModels
 {
+    /// <summary>
+    /// ViewModel for Reservation View
+    /// </summary>
     public class ReservationViewModel: ViewModelBase<Reservation>
     {
         #region Fields

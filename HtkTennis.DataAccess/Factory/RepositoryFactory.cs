@@ -4,7 +4,9 @@ using HtkTennis.Entities.Models;
 namespace HtkTennis.DataAccess.Factory
 {
     /// <summary>
-    /// Base repository interface
+    /// Factory Repository Class
+    /// Used for creating repositories without the need of a
+    /// constructor for each one
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class RepositoryFactory<TRepository, TEntity>

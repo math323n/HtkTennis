@@ -146,7 +146,7 @@ namespace HtkTennis.GUI.ViewModels
 
         #region Edit
         /// <summary>
-        /// Validates if the delete button can be pressed
+        /// button for validating if Editing is possible
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
@@ -163,7 +163,7 @@ namespace HtkTennis.GUI.ViewModels
         }
 
         /// <summary>
-        /// Eventhandler for when the delete button is pressed in the view
+        /// Eventhandler for when the edit button is pressed in the view
         /// </summary>
         /// <param name="parameter"></param>
         protected virtual void Edit(object parameter)
@@ -187,7 +187,10 @@ namespace HtkTennis.GUI.ViewModels
             // Return false if the conditions where not met
             return false;
         }
-
+        /// <summary>
+        /// Eventhandler for when the save button is pressed in the view
+        /// </summary>
+        /// <param name="parameter"></param>
         protected virtual async void Save(object parameter)
         {
             // Create factory, and get the instance

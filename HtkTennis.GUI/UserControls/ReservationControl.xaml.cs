@@ -57,7 +57,7 @@ namespace HtkTennis.GUI.UserControls
             catch(Exception ex)
             {
                 // Output error message
-                MessageBox.Show(ex.Message, "Der opstod en fejl.", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "An error has occurred, please check the log file for further information.", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 // Log Exception
                 await Logger.LogAsync(ex);

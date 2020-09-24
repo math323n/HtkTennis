@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace HtkTennis.DataAccess
 {
+    /// <summary>
+    /// Repository for retrieving all rankings
+    /// </summary>
     public class RankingRepository: RepositoryBase<Ranking>
     {
         /// <summary>

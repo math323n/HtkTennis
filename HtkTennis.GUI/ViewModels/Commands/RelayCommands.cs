@@ -5,6 +5,11 @@ using System.Windows.Input;
 
 namespace HtkTennis.GUI.ViewModels.Commands
 {
+    /// <summary>
+    /// Using RelayCommand, commands can be binded directly to the ViewModels, 
+    /// with no need for writing code in views codebehind
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class RelayCommand<T>: ICommand
     {
         #region Fields

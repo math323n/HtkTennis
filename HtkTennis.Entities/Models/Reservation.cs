@@ -7,12 +7,12 @@ namespace HtkTennis.Entities
     public partial class Reservation
     {
         #region Fields
-        int pkReservationId;
-        int fkCourtId;
-        int fkFirstMember;
-        int fkSecondMember;
-        DateTime startTime;
-        DateTime endTime;
+       protected int pkReservationId;
+       protected int fkCourtId;
+       protected int fkFirstMemberId;
+       protected int fkSecondMemberId;
+       protected DateTime startTime;
+       protected DateTime endTime;
         #endregion
 
         #region Properties
@@ -71,20 +71,20 @@ namespace HtkTennis.Entities
         /// <summary>
         /// Id of the first player <see cref="Member"/>
         /// </summary>
-        public virtual int FkFirstMember
+        public virtual int FkFirstMemberId
         {
             get
             {
-                return fkFirstMember;
+                return fkFirstMemberId;
             }
             set
             {
-                if(fkFirstMember != value)
+                if(fkFirstMemberId != value)
                 {
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {
-                        fkFirstMember = value;
+                        fkFirstMemberId = value;
                     }
                     else
                     {
@@ -97,20 +97,20 @@ namespace HtkTennis.Entities
         /// <summary>
         /// Id of the second player <see cref="Member"/>
         /// </summary>
-        public virtual int FkSecondMember
+        public virtual int FkSecondMemberId
         {
             get
             {
-                return fkSecondMember;
+                return fkSecondMemberId;
             }
             set
             {
-                if(fkSecondMember != value)
+                if(fkSecondMemberId != value)
                 {
                     (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(value);
                     if(isValid)
                     {
-                        fkSecondMember = value;
+                        fkSecondMemberId = value;
                     }
                     else
                     {
