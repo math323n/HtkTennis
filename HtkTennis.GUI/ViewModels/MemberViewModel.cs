@@ -28,6 +28,8 @@ namespace HtkTennis.GUI.ViewModels
         protected RelayCommand<object> editCommand;
         protected RelayCommand<object> saveCommand;
         protected RelayCommand<object> deleteCommand;
+        private bool currentlyAdding = false;
+
         #endregion
 
         #region Constructor
@@ -201,17 +203,30 @@ namespace HtkTennis.GUI.ViewModels
         /// <param name="parameter"></param>
         protected virtual void Add(object parameter)
         {
-            // Remove selected item
-            SelectedItem = new Member() { Birthdate = DateTime.Now };
+            if(!currentlyAdding)
+            {
+                // Remove selected item
+                SelectedItem = new Member() { Birthdate = DateTime.Now };
 
-            // Set textbox values
-            FirstName = SelectedItem.FirstName;
-            LastName = SelectedItem.LastName;
-            Address = SelectedItem.Address;
-            Email = SelectedItem.Email;
-            Phone = SelectedItem.Phone;
-            Birthdate = SelectedItem.Birthdate;
-
+                // Set textbox values
+                FirstName = SelectedItem.FirstName;
+                LastName = SelectedItem.LastName;
+                Address = SelectedItem.Address;
+                Email = SelectedItem.Email;
+                Phone = SelectedItem.Phone;
+                Birthdate = SelectedItem.Birthdate;
+                currentlyAdding = true;
+            }
+            else
+            {
+                SelectedItem = null;
+                FirstName = null;
+                LastName = null;
+                Address = null;
+                Email = null;
+                Phone = null;
+                currentlyAdding = false;
+            }
         }
         #endregion
 
@@ -241,6 +256,7 @@ namespace HtkTennis.GUI.ViewModels
         {
             if(parameter is Member member)
             {
+
                 FirstName = member.FirstName;
                 LastName = member.LastName;
                 Address = member.Address;

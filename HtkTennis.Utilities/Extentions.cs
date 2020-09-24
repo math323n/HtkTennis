@@ -4,6 +4,10 @@ using System.Collections.ObjectModel;
 
 namespace HtkTennis.Utilities
 {
+
+    /// <summary>
+    /// Class for improving Seperation of Concerns
+    /// </summary>
     public static class Extensions
     {
         /// <summary>

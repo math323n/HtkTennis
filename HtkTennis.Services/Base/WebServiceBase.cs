@@ -9,6 +9,7 @@ namespace HtkTennis.Services.Base
 {
     /// <summary>
     /// Abstract base class for implementation of <see cref="CallWebApiAsync(string)"/>
+    /// Purpose of the class is to be an improvement to <see cref="CallWebApiAsync(string)"/>
     /// </summary>
     public abstract class WebServiceBase
     {

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace HtkTennis
 {
+    /// <summary>
+    /// Logger is useful for debugging code & discovering errors.
+    /// </summary>
     public static class Logger
     {
         #region Fields
