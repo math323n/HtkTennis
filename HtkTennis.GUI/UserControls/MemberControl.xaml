@@ -34,17 +34,17 @@
 
             <!--#region ListView -->
             <ListView Grid.Row="0"
-                      ItemsSource="{Binding Items}"
-                      SelectedItem="{Binding SelectedItem}">
+                      ItemsSource="{Binding Members}"
+                      SelectedItem="{Binding SelectedMember}">
 
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID"
                                         DisplayMemberBinding="{Binding PkMemberId}" />
                         <GridViewColumn Header="Fornavn"
-                                        DisplayMemberBinding="{Binding Firstname}" />
+                                        DisplayMemberBinding="{Binding FirstName}" />
                         <GridViewColumn Header="Efternavn"
-                                        DisplayMemberBinding="{Binding Lastname}" />
+                                        DisplayMemberBinding="{Binding LastName}" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -55,16 +55,22 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <Button Content="Tilføj"
-                        Width="60"
+                        Margin="3"
+                        Width="50"
+                        Background="AliceBlue"
                         Command="{Binding AddCommand}" />
                 <Button Content="Rediger"
-                        Width="60"
+                        Width="50"
+                        Background="AliceBlue"
+                        Margin="3"
                         Command="{Binding EditCommand}"
-                        CommandParameter="{Binding SelectedItem}" />
+                        CommandParameter="{Binding SelectedMember}" />
                 <Button Content="Gem"
-                        Width="60"
+                        Width="50"
+                        Background="AliceBlue"
+                        Margin="3"
                         Command="{Binding SaveCommand}"
-                        CommandParameter="{Binding SelectedItem}" />
+                        CommandParameter="{Binding SelectedMember}" />
             </StackPanel>
             <!--#endregion-->
 
@@ -74,7 +80,7 @@
         <!--#region Master -->
         <Grid Grid.Column="1">
             <GroupBox Header="Oplysninger"
-                      Background="White"
+                      Background="FloralWhite"
                       Height="180"
                       Width="400">
                 <StackPanel Orientation="Horizontal">
@@ -85,37 +91,37 @@
                             <Label Content="Fornavn"
                                    Width="80" />
                             <TextBox Width="150"
-                                     Text="{Binding Firstname, Mode=TwoWay}" />
+                                     Text="{Binding  SelectedMember.FirstName, Mode=TwoWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Efternavn"
                                    Width="80" />
                             <TextBox Width="150"
-                                     Text="{Binding Lastname, Mode=TwoWay}" />
+                                     Text="{Binding SelectedMember.LastName, Mode=TwoWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Addresse"
                                    Width="80" />
                             <TextBox Width="150"
-                                     Text="{Binding Address, Mode=TwoWay}" />
+                                     Text="{Binding  SelectedMember.Address, Mode=TwoWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Mobil"
                                    Width="80" />
                             <TextBox Width="150"
-                                     Text="{Binding Phone, Mode=TwoWay}" />
+                                     Text="{Binding SelectedMember.Phone, Mode=TwoWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Email"
                                    Width="80" />
                             <TextBox Width="150"
-                                     Text="{Binding Email, Mode=TwoWay}" />
+                                     Text="{Binding SelectedMember.Email, Mode=TwoWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Fødselsdag"
                                    Width="80" />
                             <DatePicker Width="150"
-                                        SelectedDate="{Binding Birthdate, Mode=TwoWay}" />
+                                        SelectedDate="{Binding  SelectedMember.Birthdate, Mode=TwoWay}" />
                         </StackPanel>
                     </StackPanel>
                     <!--#endregion-->
@@ -126,7 +132,7 @@
                             Height="25"
                             Margin="40,0,0,0"
                             Command="{Binding DeleteCommand}"
-                            CommandParameter="{Binding SelectedItem}" />
+                            CommandParameter="{Binding SelectedMember}" />
                     <!--#endregion-->
 
                 </StackPanel>

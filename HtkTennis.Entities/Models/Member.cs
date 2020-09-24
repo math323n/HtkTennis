@@ -14,7 +14,7 @@ namespace HtkTennis.Entities
         protected string address;
         protected string email;
         protected DateTime birthdate;
-        protected int phone;
+        protected string phone;
         #endregion
 
         #region Constructor
@@ -193,7 +193,7 @@ namespace HtkTennis.Entities
         /// <summary>
         /// Birthdate of the case <see cref="Member"/>
         /// </summary>
-        public virtual int Phone
+        public virtual string Phone
         {
             get
             {
@@ -203,7 +203,7 @@ namespace HtkTennis.Entities
             {
                 if(phone != value)
                 {
-                    (bool isValid, string errorMessage) = Validations.ValidateIsIntNegative(phone);
+                    (bool isValid, string errorMessage) = Validations.ValidateIsStringNull(phone);
                     if(isValid)
                     {
                         phone = value;

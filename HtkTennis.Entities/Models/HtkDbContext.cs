@@ -53,6 +53,10 @@ namespace HtkTennis.Entities.Models
                     .IsRequired()
                     .HasMaxLength(255);
 
+                entity.Property(e => e.Phone)
+                  .IsRequired()
+                  .HasMaxLength(255);
+
                 entity.Property(e => e.Birthdate).HasColumnType("datetime");
 
                 entity.Property(e => e.Email)
