@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HtkTennis.GUI"
         xmlns:usercontrols="clr-namespace:HtkTennis.GUI.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Htk-Tennisklub program"
         Height="600"
         Width="800">
     <Grid>
