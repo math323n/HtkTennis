@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HtkTennis.DataAccess\HtkTennis.DataAccess.csproj" />
     <ProjectReference Include="..\HtkTennis.Entities\HtkTennis.Entities.csproj" />
     <ProjectReference Include="..\HtkTennis.Logging\HtkTennis.Logging.csproj" />
   </ItemGroup>
