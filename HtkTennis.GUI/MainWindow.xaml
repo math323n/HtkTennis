@@ -13,15 +13,13 @@
         <!--#region Grid Definitions-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
-            <ColumnDefinition Width="200" />
-            <ColumnDefinition Width="200" />
-            <ColumnDefinition Width="200" />
+            
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
-            <RowDefinition Height="180" />
-            <RowDefinition Height="200" />
-            <RowDefinition Height="200" />
+           
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <!--#endregion-->
 
@@ -45,7 +43,7 @@
         <!-- Tabs -->
         <TabControl Grid.Row="1"
                     Grid.RowSpan="4"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="4"
                     Background="#FFFAFA">
 
             <!--#region Orders-->

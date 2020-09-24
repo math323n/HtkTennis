@@ -17,11 +17,10 @@ using System.Windows.Shapes;
 namespace HtkTennis.GUI.UserControls
 {
     /// <summary>
-    /// Interaction logic for MemberController.xaml
+    /// Interaction logic for MemberControl.xaml
     /// </summary>
     public partial class MemberControl: UserControl
     {
-
         #region Fields
         private readonly MemberViewModel viewModel;
         private bool isLoaded;
@@ -39,7 +38,7 @@ namespace HtkTennis.GUI.UserControls
 
         #region Methods
         /// <summary>
-        /// Runs when Controller is loaded
+        /// Initialize the viewModel when the view has been loaded, and prevents reinitialization
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -47,21 +46,23 @@ namespace HtkTennis.GUI.UserControls
         {
             try
             {
-                // Check if isLoaded is false
+                // Check if this has already been loaded
                 if(!isLoaded)
                 {
-                    // Set isLoaded to true
+                    // Change isLoaded value
                     isLoaded = !isLoaded;
 
+                    // Initialize the viewModel
                     await viewModel.InitializeAsync();
                 }
             }
             catch(Exception ex)
             {
-                Logger.Log(ex);
-                Exception originalException = ex.GetOriginalException();
+                // Output error message
+                MessageBox.Show(ex.Message, "Der opstod en fejl.", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                MessageBox.Show(originalException.Message, "An error has occurred, please check the log file for further information.", MessageBoxButton.OK, MessageBoxImage.Error);
+                // Log Exception
+                await Logger.LogAsync(ex);
             }
         }
         #endregion
