@@ -18,8 +18,8 @@ namespace HtkTennis.GUI.ViewModels
     public class MemberViewModel: ViewModelBase<Member>
     {
         #region Fields
-        protected string firstname;
-        protected string lastname;
+        protected string firstName;
+        protected string lastName;
         protected string address;
         protected string email;
         protected string phone;
@@ -47,24 +47,24 @@ namespace HtkTennis.GUI.ViewModels
         /// <summary>
         /// Firsname TextBox in the view
         /// </summary>
-        public virtual string Firstname
+        public virtual string FirstName
         {
-            get { return firstname; }
+            get { return firstName; }
             set
             {
-                SetProperty(ref firstname, value);
+                SetProperty(ref firstName, value);
             }
         }
 
         /// <summary>
         /// Lastname TextBox in the view
         /// </summary>
-        public virtual string Lastname
+        public virtual string LastName
         {
-            get { return lastname; }
+            get { return lastName; }
             set
             {
-                SetProperty(ref lastname, value);
+                SetProperty(ref lastName, value);
             }
         }
 
@@ -205,8 +205,8 @@ namespace HtkTennis.GUI.ViewModels
             SelectedItem = new Member() { Birthdate = DateTime.Now };
 
             // Set textbox values
-            Firstname = SelectedItem.FirstName;
-            Lastname = SelectedItem.LastName;
+            FirstName = SelectedItem.FirstName;
+            LastName = SelectedItem.LastName;
             Address = SelectedItem.Address;
             Email = SelectedItem.Email;
             Phone = SelectedItem.Phone;
@@ -224,7 +224,7 @@ namespace HtkTennis.GUI.ViewModels
         protected virtual bool CanEdit(object parameter)
         {
             // Null and type check
-            if(parameter is Member member && member.PkMemberId >= 1 && Firstname == null)
+            if(parameter is Member member && member.PkMemberId >= 1 && FirstName == null)
             {
                 return true;
             }
@@ -241,8 +241,8 @@ namespace HtkTennis.GUI.ViewModels
         {
             if(parameter is Member member)
             {
-                Firstname = member.FirstName;
-                Lastname = member.LastName;
+                FirstName = member.FirstName;
+                LastName = member.LastName;
                 Address = member.Address;
                 Email = member.Email;
                 Phone = member.Phone;
@@ -255,7 +255,7 @@ namespace HtkTennis.GUI.ViewModels
         protected virtual bool CanSave(object parameter)
         {
             // Null and type check
-            if(parameter is Member && Firstname != null)
+            if(parameter is Member && FirstName != null)
             {
                 return true;
             }
@@ -277,8 +277,8 @@ namespace HtkTennis.GUI.ViewModels
                 if(member.PkMemberId >= 1)
                 {
                     // Assign values
-                    SelectedItem.FirstName = Firstname;
-                    SelectedItem.LastName = Lastname;
+                    SelectedItem.FirstName = FirstName;
+                    SelectedItem.LastName = LastName;
                     SelectedItem.Address = Address;
                     SelectedItem.Email = Email;
                     SelectedItem.Phone = Phone;
@@ -291,8 +291,8 @@ namespace HtkTennis.GUI.ViewModels
                 {
                     Member newMember = new Member()
                     {
-                        FirstName = Firstname,
-                        LastName = Lastname,
+                        FirstName = FirstName,
+                        LastName = LastName,
                         Address = Address,
                         Email = Email,
                         Phone = Phone,
@@ -307,8 +307,8 @@ namespace HtkTennis.GUI.ViewModels
 
 
                 // Reset values in the view
-                Firstname = null;
-                Lastname = null;
+                FirstName = null;
+                LastName = null;
                 Address = null;
                 Email = null;
                 Phone = null;
@@ -331,7 +331,7 @@ namespace HtkTennis.GUI.ViewModels
         protected virtual bool CanDelete(object parameter)
         {
             // Null and type check
-            if(parameter is Member member && member.PkMemberId >= 1 && Firstname != null)
+            if(parameter is Member member && member.PkMemberId >= 1 && FirstName != null)
             {
                 return true;
             }
@@ -357,8 +357,8 @@ namespace HtkTennis.GUI.ViewModels
             Items.Remove(SelectedItem);
 
             // Reset values in the view
-            Firstname = null;
-            Lastname = null;
+            FirstName = null;
+            LastName = null;
             Address = null;
             Email = null;
             Phone = null;

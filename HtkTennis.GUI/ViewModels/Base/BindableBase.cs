@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 namespace HtkTennis.ViewModels.Base
 {
     /// <summary>
-    /// Implementation of <see cref="INotifyPropertyChanged" /> to simplify models
+    /// Implementation of <see cref="INotifyPropertyChanged" /> to simplify viewmodels
     /// </summary>
     public abstract class BindableBase: INotifyPropertyChanged
     {

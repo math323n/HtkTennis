@@ -34,8 +34,8 @@
 
             <!--#region ListView -->
             <ListView Grid.Row="0"
-                      ItemsSource="{Binding Members}"
-                      SelectedItem="{Binding SelectedMember}">
+                      ItemsSource="{Binding Items}"
+                      SelectedItem="{Binding SelectedItem}">
 
                 <ListView.View>
                     <GridView>
@@ -64,13 +64,13 @@
                         Background="AliceBlue"
                         Margin="3"
                         Command="{Binding EditCommand}"
-                        CommandParameter="{Binding SelectedMember}" />
+                        CommandParameter="{Binding SelectedItem}" />
                 <Button Content="Gem"
                         Width="50"
                         Background="AliceBlue"
                         Margin="3"
                         Command="{Binding SaveCommand}"
-                        CommandParameter="{Binding SelectedMember}" />
+                        CommandParameter="{Binding SelectedItem}" />
             </StackPanel>
             <!--#endregion-->
 
@@ -91,37 +91,37 @@
                             <Label Content="Fornavn"
                                    Width="80" />
                             <TextBox Width="150"
-                                     Text="{Binding  SelectedMember.FirstName, Mode=TwoWay}" />
+                                     Text="{Binding FirstName, Mode=TwoWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Efternavn"
                                    Width="80" />
                             <TextBox Width="150"
-                                     Text="{Binding SelectedMember.LastName, Mode=TwoWay}" />
+                                     Text="{Binding LastName, Mode=TwoWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Addresse"
                                    Width="80" />
                             <TextBox Width="150"
-                                     Text="{Binding  SelectedMember.Address, Mode=TwoWay}" />
+                                     Text="{Binding Address, Mode=TwoWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Mobil"
                                    Width="80" />
                             <TextBox Width="150"
-                                     Text="{Binding SelectedMember.Phone, Mode=TwoWay}" />
+                                     Text="{Binding Phone, Mode=TwoWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Email"
                                    Width="80" />
                             <TextBox Width="150"
-                                     Text="{Binding SelectedMember.Email, Mode=TwoWay}" />
+                                     Text="{Binding Email, Mode=TwoWay}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Fødselsdag"
                                    Width="80" />
                             <DatePicker Width="150"
-                                        SelectedDate="{Binding  SelectedMember.Birthdate, Mode=TwoWay}" />
+                                        SelectedDate="{Binding Birthdate, Mode=TwoWay}" />
                         </StackPanel>
                     </StackPanel>
                     <!--#endregion-->
@@ -132,7 +132,7 @@
                             Height="25"
                             Margin="40,0,0,0"
                             Command="{Binding DeleteCommand}"
-                            CommandParameter="{Binding SelectedMember}" />
+                            CommandParameter="{Binding SelectedItem}" />
                     <!--#endregion-->
 
                 </StackPanel>

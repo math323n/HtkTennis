@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace HtkTennis.GUI.UserControls
 {
-    /// <summary>
-    /// Interaction logic for MemberControl.xaml
-    /// </summary>
     public partial class MemberControl: UserControl
     {
         #region Fields
