@@ -12,7 +12,7 @@ namespace HtkTennisGui.ViewModels.Base
 {
 
     /// <summary>
-    /// Base class for ViewModels
+    /// Generic base class for easy implementation
     /// </summary>
     public abstract class ViewModelBase<TModel>: BindableBase where TModel : class
     {

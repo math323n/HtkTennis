@@ -2,338 +2,126 @@
 using HtkTennis.DataAccess.Factory;
 using HtkTennis.DataAccess.Repositories;
 using HtkTennis.Entities;
-using HtkTennis.GUI.ViewModels.Commands;
 using HtkTennis.Utilities;
-
 using HtkTennisGui.ViewModels.Base;
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HtkTennis.GUI.ViewModels
 {
-    public class ReservationViewModel: ViewModelBase<Member>
+    public class ReservationViewModel: ViewModelBase<Reservation>
     {
         #region Fields
-        protected Member fkFirstMember;
-        protected Member fkSecondMember;
-        protected DateTime startTime;
-        protected DateTime endTime;
-
-        protected RelayCommand<object> addCommand;
-        protected RelayCommand<object> editCommand;
-        protected RelayCommand<object> saveCommand;
-        protected RelayCommand<object> deleteCommand;
+        protected ObservableCollection<Court> courts;
+        protected Court selectedCourt;
+        protected ObservableCollection<Member> members;
+        protected Member selectedMember;
         #endregion
 
         #region Constructor
         public ReservationViewModel()
         {
-            // Initialize relay commands
-            /*AddCommand = new RelayCommand<object>(Add, CanAdd);
-            EditCommand = new RelayCommand<object>(Edit, CanEdit);
-            SaveCommand = new RelayCommand<object>(Save, CanSave);
-            DeleteCommand = new RelayCommand<object>(Delete, CanDelete);*/
+            // Initialize collections
+            courts = new ObservableCollection<Court>();
+            members = new ObservableCollection<Member>();
         }
         #endregion
 
         #region Properties
 
+        #region Courts
         /// <summary>
-        /// Firsname TextBox in the view
+        /// The courts in the Courts ComboBox in the view
         /// </summary>
-        public virtual Member FkFirstMember
+        public ObservableCollection<Court> Courts
         {
-            get { return fkFirstMember; }
+            get { return courts; }
             set
             {
-                SetProperty(ref fkFirstMember, value);
+                SetProperty(ref courts, value);
             }
         }
 
         /// <summary>
-        /// First member TextBox in the view
+        /// The selected Court of the Courts ComboBox in the view
         /// </summary>
-        public virtual Member FkSecondMember
+        public virtual Court SelectedCourt
         {
-            get { return fkSecondMember; }
+            get { return selectedCourt; }
             set
             {
-                SetProperty(ref fkSecondMember, value);
-            }
-        }
-
-        /// <summary>
-        /// Birthdate DatePicker in the view
-        /// </summary>
-        public virtual DateTime StartTime
-        {
-            get { return startTime; }
-            set
-            {
-                SetProperty(ref startTime, value);
-            }
-        }
-
-        /// <summary>
-        /// Birthdate DatePicker in the view
-        /// </summary>
-        public virtual DateTime EndTime
-        {
-            get { return endTime; }
-            set
-            {
-                SetProperty(ref endTime, value);
+                SetProperty(ref selectedCourt, value);
             }
         }
         #endregion
 
+        #region Members
         /// <summary>
-        /// Command for adding Members
+        /// The members in the view available for selection when making a reservation
         /// </summary>
-        public virtual RelayCommand<object> AddCommand
+        public ObservableCollection<Member> Members
         {
-            get
-            {
-                return addCommand;
-            }
+            get { return members; }
             set
             {
-                SetProperty(ref addCommand, value);
+                SetProperty(ref members, value);
             }
         }
 
         /// <summary>
-        /// Command for editing Members
+        /// The selected Member in the view
         /// </summary>
-        public virtual RelayCommand<object> EditCommand
+        public virtual Member SelectedMember
         {
-            get
-            {
-                return editCommand;
-            }
+            get { return selectedMember; }
             set
             {
-                SetProperty(ref editCommand, value);
+                SetProperty(ref selectedMember, value);
             }
         }
+        #endregion
 
+        #endregion
+
+        #region Methods
         /// <summary>
-        /// Command for saving Members
+        /// Override of <see cref="LoadAllAsync"/> to use <see cref="ReservationRepository"/> instead for including navigation properties
         /// </summary>
-        public virtual RelayCommand<object> SaveCommand
-        {
-            get
-            {
-                return saveCommand;
-            }
-            set
-            {
-                SetProperty(ref saveCommand, value);
-            }
-        }
-
-        /// <summary>
-        /// Command for deleting Members
-        /// </summary>
-        public virtual RelayCommand<object> DeleteCommand
-        {
-            get
-            {
-                return deleteCommand;
-            }
-            set
-            {
-                SetProperty(ref deleteCommand, value);
-            }
-        }
-
-
-
-
-
-        /// <summary>
-        /// Validates if the delete button can be pressed
-        /// </summary>
-        /// <param name="parameter"></param>
         /// <returns></returns>
-        protected virtual bool CanAdd(object parameter)
-        {
-            // Return true
-            return true;
-        }
-
-        /// <summary>
-        /// Eventhandler for when the delete button is pressed in the view
-        /// </summary>
-        /// <param name="parameter"></param>
-        protected virtual void Add(object parameter)
-        {
-            // Remove selected item
-            SelectedItem = new Member() { Birthdate = DateTime.Now };
-
-            // Set textbox values
-          FkFirstMember = (Member)SelectedItem.ReservationFkFirstMember;
-            FkSecondMember = (Member)SelectedItem.ReservationFkSecondMember;
-
-
-        }
-
-
-  /*
-        /// <summary>
-        /// Validates if the delete button can be pressed
-        /// </summary>
-        /// <param name="parameter"></param>
-        /// <returns></returns>
-        protected virtual bool CanEdit(object parameter)
-        {
-            // Null and type check
-            if(parameter is Member member && member.PkMemberId >= 1 && FirstName == null)
-            {
-                return true;
-            }
-
-            // Return false if the conditions where not met
-            return false;
-        }
-
-        /// <summary>
-        /// Eventhandler for when the delete button is pressed in the view
-        /// </summary>
-        /// <param name="parameter"></param>
-        protected virtual void Edit(object parameter)
-        {
-            if(parameter is Member member)
-            {
-                FirstName = member.FirstName;
-                LastName = member.LastName;
-                Address = member.Address;
-                Email = member.Email;
-                Phone = member.Phone;
-                Birthdate = member.Birthdate;
-            }
-        }
-  
-
-        protected virtual bool CanSave(object parameter)
-        {
-            // Null and type check
-            if(parameter is Member && FirstName != null)
-            {
-                return true;
-            }
-
-            // Return false if the conditions where not met
-            return false;
-        }
-
-        protected virtual async void Save(object parameter)
+        protected override async Task LoadAllAsync()
         {
             // Create factory, and get the instance
-            RepositoryFactory<RepositoryBase<Member>, Member> repositoryFactory = RepositoryFactory<RepositoryBase<Member>, Member>.GetInstance();
+            RepositoryFactory<ReservationRepository, Reservation> reservationFactory = RepositoryFactory<ReservationRepository, Reservation>.GetInstance();
             // Create repository with the factory
-            RepositoryBase<Member> itemRepository = repositoryFactory.Create();
-
-            if(parameter is Member member)
-            {
-                // Null check, and id check
-                if(member.PkMemberId >= 1)
-                {
-                    // Assign values
-                    SelectedItem.FirstName = FirstName;
-                    SelectedItem.LastName = LastName;
-                    SelectedItem.Address = Address;
-                    SelectedItem.Email = Email;
-                    SelectedItem.Phone = Phone;
-                    SelectedItem.Birthdate = Birthdate;
-
-                    // Save changes made
-                    await itemRepository.UpdateAsync();
-                }
-                else
-                {
-                    Member newMember = new Member()
-                    {
-                        FirstName = FirstName,
-                        LastName = LastName,
-                        Address = Address,
-                        Email = Email,
-                        Phone = Phone,
-                        Birthdate = Birthdate,
-                    };
-
-                    await itemRepository.AddAsync(newMember);
-
-                    // Add member to items
-                    Items.Add(newMember);
-                }
+            ReservationRepository reservationRepository = reservationFactory.Create();
+            // Get all reservations
+            IEnumerable<Reservation> reservations = await reservationRepository.GetAllAsync();
+            // Replace collection
+            Items.ReplaceWith(reservations);
 
 
-                // Reset values in the viewa
-                FirstName = null;
-                LastName = null;
-                Address = null;
-                Email = null;
-                Phone = null;
-                Birthdate = DateTime.Now;
-
-                // Get the listview of the items
-                ICollectionView view = CollectionViewSource.GetDefaultView(Items);
-                // Refresh listview
-                view.Refresh();
-            }
-        }
-
-
-    
-        /// <summary>
-        /// Validates if the delete button can be pressed
-        /// </summary>
-        /// <param name="parameter"></param>
-        /// <returns></returns>
-        protected virtual bool CanDelete(object parameter)
-        {
-            // Null and type check
-            if(parameter is Member member && member.PkMemberId >= 1 && FirstName != null)
-            {
-                return true;
-            }
-
-            // Return false if the conditions where not met
-            return false;
-        }
-
-        /// <summary>
-        /// Eventhandler for when the delete button is pressed in the view
-        /// </summary>
-        /// <param name="parameter"></param>
-        protected virtual async void Delete(object parameter)
-        {
             // Create factory, and get the instance
-            RepositoryFactory<RepositoryBase<Member>, Member> repositoryFactory = RepositoryFactory<RepositoryBase<Member>, Member>.GetInstance();
+            RepositoryFactory<RepositoryBase<Court>, Court> courtFactory = RepositoryFactory<RepositoryBase<Court>, Court>.GetInstance();
             // Create repository with the factory
-            RepositoryBase<Member> itemRepository = repositoryFactory.Create();
-            // Save changes made
-            await itemRepository.DeleteAsync(SelectedItem);
+            RepositoryBase<Court> courtRepository = courtFactory.Create();
+            // Get all reservations
+            IEnumerable<Court> courts = await courtRepository.GetAllAsync();
+            // Replace collection
+            Courts.ReplaceWith(courts);
 
-            // Remove SelectedItem from the items collection
-            Items.Remove(SelectedItem);
 
-            // Reset values in the view
-            FirstName = null;
-            LastName = null;
-            Address = null;
-            Email = null;
-            Phone = null;
-            Birthdate = DateTime.Now;
-
-            // Get the listview of the items
-            ICollectionView view = CollectionViewSource.GetDefaultView(Items);
-            // Refresh listview
-            view.Refresh();
-        }*/
+            // Create factory, and get the instance
+            RepositoryFactory<RepositoryBase<Member>, Member> memberFactory = RepositoryFactory<RepositoryBase<Member>, Member>.GetInstance();
+            // Create repository with the factory
+            RepositoryBase<Member> memberRepository = memberFactory.Create();
+            // Get all reservations
+            IEnumerable<Member> members = await memberRepository.GetAllAsync();
+            // Replace collection
+            Members.ReplaceWith(members);
+        }
+        #endregion
     }
 }

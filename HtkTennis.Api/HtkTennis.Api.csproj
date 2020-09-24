@@ -16,5 +16,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HtkTennis.DataAccess\HtkTennis.DataAccess.csproj" />
+  </ItemGroup>
+
 
 </Project>

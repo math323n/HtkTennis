@@ -1,10 +1,16 @@
 ﻿using HtkTennis.GUI.ViewModels;
-using HtkTennis.Utilities;
-
 using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace HtkTennis.GUI.UserControls
 {
@@ -23,14 +29,14 @@ namespace HtkTennis.GUI.UserControls
         {
             InitializeComponent();
 
-            // Initialize the viewModel
+            // Initialize the viewmodel
             viewModel = DataContext as ReservationViewModel;
         }
         #endregion
 
         #region Methods
         /// <summary>
-        /// Runs when Controller is loaded
+        /// Initialize the viewModel when the view has been loaded, and prevents reinitialization
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -38,21 +44,23 @@ namespace HtkTennis.GUI.UserControls
         {
             try
             {
-                // Check if isLoaded is false
+                // Check if this has already been loaded
                 if(!isLoaded)
                 {
-                    // Set isLoaded to true
+                    // Change isLoaded value
                     isLoaded = !isLoaded;
 
+                    // Initialize the viewModel
                     await viewModel.InitializeAsync();
                 }
             }
             catch(Exception ex)
             {
-                Logger.Log(ex);
-                Exception originalException = ex.GetOriginalException();
+                // Output error message
+                MessageBox.Show(ex.Message, "Der opstod en fejl.", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                MessageBox.Show(originalException.Message, "An error has occurred, please check the log file for further information.", MessageBoxButton.OK, MessageBoxImage.Error);
+                // Log Exception
+                await Logger.LogAsync(ex);
             }
         }
         #endregion
